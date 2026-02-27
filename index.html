@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jodie's Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body {
+      background: #f6f6f8;
+      color: #333;
+    }
+    .header {
+      background: #fff;
+      padding: 36px 20px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+    .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 14px;
+    }
+    .name {
+      font-size: 28px;
+      font-weight: 700;
+      color: #2d3748;
+    }
+    .bio {
+      font-size: 15px;
+      color: #718096;
+      margin-top: 6px;
+    }
+    nav {
+      background: #2d3748;
+      padding: 12px 10px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      white-space: nowrap;
+      overflow-x: auto;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      cursor: pointer;
+    }
+    .card-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #2d3748;
+      border-left: 5px solid #429eef;
+      padding-left: 12px;
+    }
+    .page {
+      display: none;
+      padding: 30px 20px;
+      background: #fff;
+      border-radius: 16px;
+      margin-top: 20px;
+    }
+    .page.active {
+      display: block;
+    }
+    .back-btn {
+      padding: 8px 16px;
+      background: #2d3748;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    < img class="avatar" src="https://i.ibb.co/60Ddr9LD/IMG-2351.jpg" alt="头像">
+    <h1 class="name">Jodie</h1>
+    <p class="bio">Hello, welcome to my world. ✨</p >
+  </div>
+
+  <nav>
+    <ul>
+      <li><a onclick="show('anime')">Anime</a ></li>
+      <li><a onclick="show('books')">Books</a ></li>
+      <li><a onclick="show('pets')">Pets</a ></li>
+      <li><a onclick="show('movies')">Movies</a ></li>
+      <li><a onclick="show('travel')">Travel</a ></li>
+      <li><a onclick="show('sports')">Sports</a ></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <!-- 主页面卡片 -->
+    <div id="home">
+      <div class="card" onclick="show('anime')">
+        <div class="card-title">Anime</div>
+      </div>
+      <div class="card" onclick="show('books')">
+        <div class="card-title">Books</div>
+      </div>
+      <div class="card" onclick="show('pets')">
+        <div class="card-title">Pets</div>
+      </div>
+      <div class="card" onclick="show('movies')">
+        <div class="card-title">Movies</div>
+      </div>
+      <div class="card" onclick="show('travel')">
+        <div class="card-title">Travel</div>
+      </div>
+      <div class="card" onclick="show('sports')">
+        <div class="card-title">Sports</div>
+      </div>
+    </div>
+
+    <!-- 每个内容都在同一个文件里！！ -->
+    <div id="anime" class="page">
+      <button class="back-btn" onclick="back()">← 返回主页</button>
+      <h2>Anime</h2>
+      <p style="margin-top:10px;text-decoration: underline;">My favourite anime：</p >
+      <p>-Attack on Titan</p >
+      <p>Generally, I prefer the main character to be either the one who possesses the strongest physical abilities or someone who has top-notch brainpower. However, Attack on Titan fits neither of these criteria, yet I still love it.By the way, the way the comic is drawn sucks.</p >
+      < img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/05/levi-in-attack-on-titan-1.jpg" width="400">
+      <p style="font-size: 12px; color: #777;">Image source: gamerant.com. All copyrights belong to their respective owners.</p >
+      < img src="https://otakukart.com/wp-content/uploads/2023/11/Eren-Yeager-Attack-on-Titan-Credits-Hajime-Isayama--2048x1024.jpg" width="400">
+      <p style="font-size: 12px; color: #777;">Image source: otakukart.com. All copyrights belong to their respective owners.</p >
+      
+      <p>-Bungo Stray Dogs</p >
+      <p>I loved this anime.However,the storytelling is an absolute mess-honestly,the plot is a complete disaster.I doubted whether the author even had a plot in mind or not.Perhaps the author lost her marbles while writing the story.
+      <p>It's really funny how the author builds the images of Russian writers — like Pushkin and Gogol. It seems that, from the book's perspective, all these Russian writers are on the evil side. I can't help wondering whether the author had a really bad time reading those Russian writers' books, like Crime and Punishment. I can't think of any other reason why he would portray them that way.</p>
+
+Although I really enjoy seeing wholesome faces appearing on my screen, I stopped reading the comic — because it's simply nonsense. It's like the Cold War: all the characters, all the plots, are out of control. However, the characters are so handsome — that's fair enough. I will finish the comic someday.</p >
+      <p>进击的巨人、鬼灭之刃、夏目友人帐、海贼王</p >
+      <p>进击的巨人、鬼灭之刃、夏目友人帐、海贼王</p >
+      <p>进击的巨人、鬼灭之刃、夏目友人帐、海贼王</p >
+    </div>
+
+    <div id="books" class="page">
+      <button class="back-btn" onclick="back()">← 返回主页</button>
+      <h2>Books</h2>
+      <p style="margin-top:10px;">我喜欢的书籍：</p >
+      <p>小王子、哈利波特、三体、朝花夕拾</p >
+    </div>
+
+    <div id="pets" class="page">
+      <button class="back-btn" onclick="back()">← 返回主页</button>
+      <h2>Pets</h2>
+      <p>小猫、小狗、兔子、仓鼠</p >
+    </div>
+
+    <div id="movies" class="page">
+      <button class="back-btn" onclick="back()">← 返回主页</button>
+      <h2>Movies</h2>
+      <p>寻梦环游记、疯狂动物城、你的名字、星际穿越</p >
+    </div>
+
+    <div id="travel" class="page">
+      <button class="back-btn" onclick="back()">← 返回主页</button>
+      <h2>Travel</h2>
+      <p>东京、首尔、巴黎、伦敦</p >
+    </div>
+
+    <div id="sports" class="page">
+      <button class="back-btn" onclick="back()">← 返回主页</button>
+      <h2>Sports</h2>
+      <p>游泳、跑步、羽毛球、瑜伽</p >
+    </div>
+
+  </div>
+
+  <script>
+    function show(id) {
+      document.getElementById('home').style.display = 'none';
+      let pages = document.querySelectorAll('.page');
+      pages.forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+    function back() {
+      document.getElementById('home').style.display = 'block';
+      let pages = document.querySelectorAll('.page');
+      pages.forEach(p => p.classList.remove('active'));
+    }
+  </script>
+
+</body>
+</html>
