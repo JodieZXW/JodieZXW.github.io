@@ -152,7 +152,7 @@
 
     <!-- 每个内容都在同一个文件里！！ -->
     <div id="anime" class="page">
-      <button class="back-btn" onclick="back()">← 返回主页</button>
+      <button class="back-btn" onclick="back()">BACK</button>
       <h2>Anime</h2>
       <p style="margin-top:10px;text-decoration: underline;">My favourite anime：</p >
       <p>-Attack on Titan</p >
@@ -187,7 +187,7 @@
     </div>
 
     <div id="books" class="page" style="background: #f0f7ff; margin: 0; padding: 20px; box-sizing: border-box;">
-  <button class="back-btn" onclick="back()" style="background: #5a9ed6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">&lt; 返回主页</button>
+  <button class="back-btn" onclick="back()" style="background: #5a9ed6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">&lt; BACK</button>
   <h2 style="color: #2c3e50; margin-top: 20px;">Books</h2>
   <p style="margin-top:10px;text-decoration: underline; color: #2c3e50;">Books I loved:</p >
   <p style="color: #2c3e50;">( Can't decide which book is my favourite. Listing is easy, selecting is the real struggle. 📚🤯)</p >
@@ -299,7 +299,7 @@
 </div>
 
    <div id="pets" class="page" style="background: #fff9e6; margin: 0; padding: 20px; box-sizing: border-box; min-height: 100vh;">
-   <button class="back-btn" onclick="back()" style="background: #f6c455; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; margin-bottom: 20px; transition: background 0.3s ease;" onmouseover="this.style.background='#e5b54a'" onmouseout="this.style.background='#f6c455'">&lt; 返回主页</button>
+   <button class="back-btn" onclick="back()" style="background: #f6c455; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; margin-bottom: 20px; transition: background 0.3s ease;" onmouseover="this.style.background='#e5b54a'" onmouseout="this.style.background='#f6c455'">&lt;BACK</button>
    <h2 style="color: #8b6914; margin-top: 0;">Pets</h2>
    <p style="margin-top:10px;text-decoration: underline; color: #8b6914;">My two precious dogs:</p >
 
@@ -407,7 +407,7 @@
   </style>
 
   
-  <button class="back-btn" onclick="back()"><- 返回主页</button>
+  <button class="back-btn" onclick="back()">BACK</button>
 
   
   <div class="banner">
@@ -484,17 +484,317 @@ setInterval(() => {
 
   
     <div id="travel" class="page">
-      <button class="back-btn" onclick="back()">← 返回主页</button>
-      <h2>Travel</h2>
-      <p>东京、首尔、巴黎、伦敦</p >
+  <style>
+    
+    #travel {
+      background-color: #F5E4E4; 
+      color: #6D4C41; 
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    #travel h2 {
+      font-size: clamp(1.8rem, 5vw, 2.4rem);
+      font-weight: bold;
+      color: #6D4C41;
+    }
+
+    #travel .desc {
+      font-size: 1rem;
+      text-align: center;
+      line-height: 1.5;
+      color: #8D6B60;
+    }
+
+   
+    #travel .back-btn {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 30px;
+      background: #D89CA1; 
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    #travel .back-btn:hover {
+      background: #C88A8F;
+    }
+
+    
+    .globe-container {
+      position: relative;
+      width: 100%;
+      max-width: 340px;
+      aspect-ratio: 1;
+      perspective: 1200px;
+      margin: 1rem auto;
+    }
+
+    .globe {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 3px solid #6D4C41;
+      transform-style: preserve-3d;
+      animation: rotate 28s linear infinite;
+    }
+
+    
+    @keyframes rotate {
+      0%   { transform: rotateY(0deg); }
+      100% { transform: rotateY(360deg); }
+    }
+
+    
+    .line {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 2px solid #6D4C41;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+   
+    .lat1 { width: 95%; height: 95%; }
+    .lat2 { width: 80%; height: 80%; }
+    .lat3 { width: 60%; height: 60%; }
+    .lat4 { width: 40%; height: 40%; }
+
+   
+    .lon1 { width: 100%; height: 100%; transform: translate(-50%, -50%) rotateY(90deg); }
+    .lon2 { width: 100%; height: 100%; transform: translate(-50%, -50%) rotateY(45deg); }
+    .lon3 { width: 100%; height: 100%; transform: translate(-50%, -50%) rotateY(135deg); }
+
+   
+    .dot {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: #D89CA1;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      transition: 0.3s;
+      z-index: 10;
+    }
+
+    .dot:hover {
+      transform: translate(-50%, -50%) scale(1.3);
+    }
+
+   
+    .label {
+      position: absolute;
+      background: white;
+      color: #6D4C41;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 20;
+    }
+
+    .label.show {
+      opacity: 1;
+    }
+  </style>
+
+  <h2>Travel</h2>
+  <button class="back-btn" onclick="back()">BACK</button>
+  <p class="desc">✈️ I've only been to a few countries, but one day I'll travel around the world. 🌍</p >
+
+  <div class="globe-container">
+    <div class="globe">
+      
+      <div class="line lat1"></div>
+      <div class="line lat2"></div>
+      <div class="line lat3"></div>
+      <div class="line lat4"></div>
+
+     
+      <div class="line lon1"></div>
+      <div class="line lon2"></div>
+      <div class="line lon3"></div>
     </div>
 
-    <div id="sports" class="page">
-      <button class="back-btn" onclick="back()">← 返回主页</button>
-      <h2>Sports</h2>
-      <p>游泳、跑步、羽毛球、瑜伽</p >
+    
+    <div class="dot" style="top:45%; left:30%" data-text="United Kingdom"></div>
+    <div class="dot" style="top:46%; left:39%" data-text="France"></div>
+    <div class="dot" style="top:44%; left:44%" data-text="Germany"></div>
+    <div class="dot" style="top:47%; left:48%" data-text="Austria"></div>
+    <div class="dot" style="top:48%; left:53%" data-text="Italy"></div>
+    <div class="dot" style="top:44%; left:35%" data-text="Switzerland"></div>
+    <div class="dot" style="top:44%; left:26%" data-text="Netherlands"></div>
+    <div class="dot" style="top:45%; left:72%" data-text="China"></div>
+    <div class="dot" style="top:35%; left:79%" data-text="Japan"></div>
+    <div class="dot" style="top:55%; left:68%" data-text="Singapore"></div>
+
+    <div class="label" id="label"></div>
+  </div>
+
+  <script>
+    const label = document.getElementById('label');
+    const dots = document.querySelectorAll('.dot');
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', (e) => {
+        label.textContent = dot.dataset.text;
+        label.style.left = e.clientX + 'px';
+        label.style.top = e.pageY + 'px';
+        label.classList.add('show');
+        setTimeout(() => label.classList.remove('show'), 2000);
+      });
+    });
+  </script>
+</div>
+
+
+  
+
+  <div id="sports" class="page">
+  <style>
+    #sports {
+      background: #E2F2E9;
+      color: #2C6650;
+      min-height: 100vh;
+      padding: 2.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    #sports h2 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+
+    #sports .desc {
+      font-size: 1rem;
+      color: #4A7C68;
+      margin-bottom: 1rem;
+      text-align: center;
+      line-height: 1.7;
+      max-width: 360px;
+    }
+
+    #sports .back-btn {
+      background: #519E7D;
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    #sports .back-btn:hover {
+      background: #3D7D5F;
+    }
+
+    .sports-list {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 1.5rem;
+    }
+
+    .sport-item {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 6px 16px rgba(0, 80, 40, 0.08);
+      transition: 0.3s;
+    }
+    .sport-item:hover {
+      transform: translateX(6px);
+    }
+
+    .sport-icon {
+      width: 44px;
+      height: 44px;
+      background: #D1EDE1;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .sport-text h3 {
+      font-size: 16px;
+      color: #2C6650;
+      margin: 0;
+    }
+    .sport-text p {
+      font-size: 12px;
+      color: #6B9F8C;
+      margin: 2px 0 0;
+    }
+  </style>
+
+  <h2>Sports</h2>
+  <button class="back-btn" onclick="back()">BACK</button>
+  
+  <p class="desc">
+    This page is just here to fool myself.<br>
+    To be honest, I’m not that into sports 🧩<br>
+    I don’t hate them or anything,<br>
+    but I just can’t stand the soreness afterwards 😇<br>
+    Period 🙂
+  </p >
+
+  <div class="sports-list">
+    <div class="sport-item">
+      <div class="sport-icon">🎾</div>
+      <div class="sport-text">
+        <h3>Tennis</h3>
+        <p>physical training in disguise</p >
+      </div>
     </div>
 
+    <div class="sport-item">
+      <div class="sport-icon">🏃‍♀️</div>
+      <div class="sport-text">
+        <h3>Running</h3>
+        <p>pulling my lungs out</p >
+      </div>
+    </div>
+
+    <div class="sport-item">
+      <div class="sport-icon">🏋️‍♀️</div>
+      <div class="sport-text">
+        <h3>Crossfit</h3>
+        <p>I yield</p >
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+
+  
      <div id="musicals" class="page">
       <button class="back-btn" onclick="back()">← 返回主页</button>
       <h2>Musicals</h2>
