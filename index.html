@@ -103,29 +103,36 @@
   </style>
 
   <style>
-/* 确保所有副页面默认完全隐藏，不影响页面高度 */
+/* 强制所有副页面默认完全隐藏，不占用任何页面高度 */
 .page {
   display: none !important;
   visibility: hidden !important;
   height: 0 !important;
+  width: 0 !important;
   overflow: hidden !important;
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
 }
+
+/* 只有被激活的副页面才正常显示 */
 .page.active {
   display: block !important;
   visibility: visible !important;
   height: auto !important;
+  width: 100% !important;
   overflow: visible !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
 }
 
-/* 确保主页在手机上正常显示 */
+/* 确保主页在所有设备上都默认显示，并且占满视口 */
 #home {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  box-sizing: border-box;
+  display: flex !important;
+  min-height: 100vh !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 </style>
 
@@ -1040,7 +1047,7 @@ setInterval(() => {
       document.getElementById(id).classList.add('active');
     }
     function back() {
-      document.getElementById('home').style.display = 'block';
+      document.getElementById('home').style.display = 'flex';
       let pages = document.querySelectorAll('.page');
       pages.forEach(p => p.classList.remove('active'));
     }
