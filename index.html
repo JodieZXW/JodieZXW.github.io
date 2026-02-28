@@ -131,12 +131,17 @@
 <div id="musicals" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#DBC6B4; z-index:9999; overflow-y:auto;">
     <div style="padding:2rem; max-width:1200px; margin:0 auto;">
         <!-- 返回按钮 -->
-        <button onclick="hide('Musicals')" style="background:#664B3A; color:#DBC6B4; border:none; padding:12px 20px; border-radius:6px; cursor:pointer; margin-bottom:2rem; font-size:16px; font-weight:500;">BACK</button>
+        <button class="back-btn" onclick="back()" style="background:#664B3A; color:#DBC6B4; border:none; padding:12px 20px; border-radius:6px; cursor:pointer; margin-bottom:2rem; font-size:16px; font-weight:500;">BACK</button>
         
+  
         <!-- 标题 -->
-        <h2 style="font-size:clamp(2rem, 8vw, 3.5rem); text-align:center; margin:0 0 0.5rem 0; color:#664B3A; font-weight:bold;">Musicals</h2>
-        <p style="text-align:center; color:#8A6B57; margin:0 auto 2rem auto; font-size:clamp(1rem, 4vw, 1.2rem);">Haunting Melodies</p >
-
+        
+    
+ <h2 style="color: #664B3A; margin-top: 20px;"> Musicals </h2>
+  <p style="margin-top:10px;text-decoration: underline; color: #8A6B57;">Haunting Melodies</p >
+  
+ 
+      
         <!-- 黑胶唱片墙 -->
         <div style="max-width:1000px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fill, minmax(100px, 1fr)); gap:clamp(10px, 3vw, 20px); justify-items:center;" id="vinylWall">
             <!-- Hamilton -->
