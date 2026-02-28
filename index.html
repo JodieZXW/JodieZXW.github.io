@@ -103,14 +103,31 @@
   </style>
 
   <style>
-  .page {
-    display: none !important;
-  }
-  .page.active {
-    diaplay:block !important;
-  }
-  </style>
+/* 确保所有副页面默认完全隐藏，不影响页面高度 */
+.page {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+.page.active {
+  display: block !important;
+  visibility: visible !important;
+  height: auto !important;
+  overflow: visible !important;
+}
 
+/* 确保主页在手机上正常显示 */
+#home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+</style>
 
 </head>
 
