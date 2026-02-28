@@ -135,7 +135,12 @@
   box-sizing: border-box !important;
 }
 </style>
-
+<style>
+.page {
+  display: none;
+}
+</style>
+  
 </head>
 
 <body>
@@ -1047,7 +1052,7 @@ setInterval(() => {
       document.getElementById(id).classList.add('active');
     }
     function back() {
-      document.getElementById('home').style.display = 'flex';
+      document.getElementById('home').style.display = 'block';
       let pages = document.querySelectorAll('.page');
       pages.forEach(p => p.classList.remove('active'));
     }
