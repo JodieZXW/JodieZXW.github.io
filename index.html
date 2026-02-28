@@ -157,6 +157,242 @@
       </div>
     </div>
 
+<div id="musicals" class="page">
+  <style>
+    #musicals {
+      /* 薄香色：#DBC6B4 作为页面背景 */
+      background: #DBC6B4;
+      color: #664B3A;
+      min-height: 100vh;
+      padding: clamp(1rem, 4vw, 2rem);
+      position: relative;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      box-sizing: border-box;
+    }
+
+    /* 松果褐：#664B3A 作为按钮主色，文字为薄香色 #DBC6B4 */
+    #musicals .back-btn {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: 100%;
+      background: #664B3A;
+      color: #DBC6B4; /* 按钮文字改为薄香色 */
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      z-index: 10;
+      display: block;
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    #musicals .back-btn:hover {
+      background: #553F30;
+    }
+
+    #musicals h2 {
+      font-size: clamp(2rem, 8vw, 3.5rem);
+      font-weight: bold;
+      color: #664B3A;
+      margin: 0 0 0.5rem 0;
+      text-align: center;
+    }
+
+    #musicals .desc {
+      font-size: clamp(1rem, 4vw, 1.2rem);
+      color: #8A6B57;
+      text-align: center;
+      margin: 0 auto 2rem auto;
+    }
+
+    .vinyl-wall {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: clamp(10px, 3vw, 20px);
+      justify-items: center;
+    }
+
+    .vinyl {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      width: 100%;
+      max-width: 120px;
+    }
+
+    .vinyl-cover {
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .vinyl-cover.spinning {
+      animation: spin 4s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .vinyl-label {
+      font-size: clamp(11px, 2.5vw, 13px);
+      text-align: center;
+      color: #664B3A;
+      line-height: 1.3;
+      word-break: keep-all;
+    }
+
+    .lyric-card {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #F5F1EC;
+      padding: 20px 24px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 320px;
+      font-size: clamp(14px, 3.5vw, 16px);
+      line-height: 1.6;
+      color: #664B3A;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 100;
+      white-space: pre-line;
+      box-sizing: border-box;
+    }
+
+    .lyric-card.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+
+  <button class="back-btn" onclick="back()">BACK</button>
+  <h2>Musicals</h2>
+  <p class="desc">Haunting Melodies</p >
+
+  <div class="vinyl-wall">
+    <div class="vinyl" onclick="showLyric(this, 'hamilton')">
+      < img class="vinyl-cover" src="https://picsum.photos/seed/hamilton-bway/300/300.jpg">
+      <div class="vinyl-label">Hamilton</div>
+    </div>
+    <div class="vinyl" onclick="showLyric(this, 'lesmis')">
+      < img class="vinyl-cover" src="https://picsum.photos/seed/lesmis-2025/300/300.jpg">
+      <div class="vinyl-label">Les Misérables</div>
+    </div>
+    <div class="vinyl" onclick="showLyric(this, 'phantom')">
+      < img class="vinyl-cover" src="https://picsum.photos/seed/phantom-opera/300/300.jpg">
+      <div class="vinyl-label">The Phantom of the Opera</div>
+    </div>
+    <div class="vinyl" onclick="showLyric(this, 'mozart')">
+      < img class="vinyl-cover" src="https://picsum.photos/seed/mozart-d/300/300.jpg">
+      <div class="vinyl-label">Mozart!</div>
+    </div>
+    <div class="vinyl" onclick="showLyric(this, 'rougenoir')">
+      < img class="vinyl-cover" src="https://picsum.photos/seed/rouge-noir-f/300/300.jpg">
+      <div class="vinyl-label">Le Rouge et le Noir</div>
+    </div>
+    <div class="vinyl" onclick="showLyric(this, 'notredame')">
+      < img class="vinyl-cover" src="https://picsum.photos/seed/notre-dame-f/300/300.jpg">
+      <div class="vinyl-label">Notre-Dame de Paris</div>
+    </div>
+    <div class="vinyl" onclick="showLyric(this, 'moliere')">
+      < img class="vinyl-cover" src="https://picsum.photos/seed/moliere-f/300/300.jpg">
+      <div class="vinyl-label">Molière</div>
+    </div>
+    <div class="vinyl" onclick="showLyric(this, '1789')">
+      < img class="vinyl-cover" src="https://picsum.photos/seed/1789-f/300/300.jpg">
+      <div class="vinyl-label">1789</div>
+    </div>
+    <div class="vinyl" onclick="showLyric(this, 'romeo')">
+      < img class="vinyl-cover" src="https://picsum.photos/seed/romeo-f/300/300.jpg">
+      <div class="vinyl-label">Roméo et Juliette</div>
+    </div>
+    <div class="vinyl" onclick="showLyric(this, 'donjuan')">
+      < img class="vinyl-cover" src="https://picsum.photos/seed/donjuan-f/300/300.jpg">
+      <div class="vinyl-label">Don Juan</div>
+    </div>
+    <div class="vinyl" onclick="showLyric(this, 'epic')">
+      < img class="vinyl-cover" src="https://picsum.photos/seed/epic-musical/300/300.jpg">
+      <div class="vinyl-label">EPIC</div>
+    </div>
+    <div class="vinyl" onclick="showLyric(this, 'six')">
+      < img class="vinyl-cover" src="https://picsum.photos/seed/six-bway/300/300.jpg">
+      <div class="vinyl-label">Six</div>
+    </div>
+  </div>
+
+  <div class="lyric-card" id="lyricCard"></div>
+
+  <script>
+    const card = document.getElementById('lyricCard');
+    let lastCover = null;
+    const lyrics = {
+      hamilton: "I am not throwing away my shot.",
+      lesmis: "Who cares about your lonely soul.",
+      phantom: "In sleep he sang to me\nIn dreams he came",
+      mozart: "Wie wird man seinen Schatten los?",
+      rougenoir: "Je veux la gloire à mes genoux,\nJe veux le monde ou rien du tout.",
+      notredame: "Il est venu le temps des cathédrales,\nLe monde est entré,\nDans un nouveau millénaire.",
+      moliere: "Tu finiras par tomber, tomber, tomber,\nDu haut des sommets où tes rêves t'ont porté.",
+      1789: "Nous sommes le futur.",
+      romeo: "Nous on fait l'amour on vit la vie,\nJour après jour nuit après nuit,\nA quoi ça sert d'être sur la terre,\nSi c'est pour faire nos vies à genoux,\nOn sait que le temps c'est comme le vent,\nDe vivre y a que ça d'important,\nOn se fout pas mal de la morale,\nOn sait bien qu'on fait pas de mal.",
+      donjuan: "Les fleurs du mal, les fleurs de lys,\nPerdent leurs pétales, c’est pareil, c’est pareil,\nLes jeux du bal, les jeux du vice,\nCa m’est égal s’ils ne m’emmènent pas au ciel.",
+      epic: "Ruthlessness is mercy upon ourselves.",
+      six: "We're one of a kind, no category.\nToo many years, lost in history."
+    };
+
+    function showLyric(vinylEl, track) {
+      const cover = vinylEl.querySelector('.vinyl-cover');
+      if (lastCover) {
+        lastCover.classList.remove('spinning');
+      }
+      if (lastCover !== cover) {
+        cover.classList.add('spinning');
+        card.textContent = lyrics[track];
+        card.classList.add('show');
+        lastCover = cover;
+      } else {
+        card.classList.remove('show');
+        lastCover = null;
+      }
+    }
+
+    // 点击空白处关闭弹窗
+    document.getElementById('musicals').addEventListener('click', function(e) {
+      if (!card.contains(e.target) && !e.target.closest('.vinyl')) {
+        card.classList.remove('show');
+        if (lastCover) {
+          lastCover.classList.remove('spinning');
+          lastCover = null;
+        }
+      }
+    });
+  </script>
+</div>
+
+
+
+
+
+    
    
     <div id="anime" class="page">
 
@@ -492,245 +728,13 @@ setInterval(() => {
 </script>
 </div>
 </div>
-  </div>
-</div>
+
     
 
-<div id="musicals" class="page">
-  <style>
-    #musicals {
-      /* 薄香色：#DBC6B4 作为页面背景 */
-      background: #DBC6B4;
-      color: #664B3A;
-      min-height: 100vh;
-      padding: clamp(1rem, 4vw, 2rem);
-      position: relative;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      box-sizing: border-box;
-    }
 
-    /* 松果褐：#664B3A 作为按钮主色，文字为薄香色 #DBC6B4 */
-    #musicals .back-btn {
-      position: relative;
-      top: auto;
-      left: auto;
-      width: 100%;
-      background: #664B3A;
-      color: #DBC6B4; /* 按钮文字改为薄香色 */
-      border: none;
-      padding: 12px 20px;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      z-index: 10;
-      display: block;
-      text-align: left;
-      margin-bottom: 2rem;
-    }
-
-    #musicals .back-btn:hover {
-      background: #553F30;
-    }
-
-    #musicals h2 {
-      font-size: clamp(2rem, 8vw, 3.5rem);
-      font-weight: bold;
-      color: #664B3A;
-      margin: 0 0 0.5rem 0;
-      text-align: center;
-    }
-
-    #musicals .desc {
-      font-size: clamp(1rem, 4vw, 1.2rem);
-      color: #8A6B57;
-      text-align: center;
-      margin: 0 auto 2rem auto;
-    }
-
-    .vinyl-wall {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      gap: clamp(10px, 3vw, 20px);
-      justify-items: center;
-    }
-
-    .vinyl {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      width: 100%;
-      max-width: 120px;
-    }
-
-    .vinyl-cover {
-      width: 100%;
-      aspect-ratio: 1/1;
-      border-radius: 10px;
-      object-fit: cover;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .vinyl-cover.spinning {
-      animation: spin 4s linear infinite;
-    }
-
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .vinyl-label {
-      font-size: clamp(11px, 2.5vw, 13px);
-      text-align: center;
-      color: #664B3A;
-      line-height: 1.3;
-      word-break: keep-all;
-    }
-
-    .lyric-card {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #F5F1EC;
-      padding: 20px 24px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      width: 90%;
-      max-width: 320px;
-      font-size: clamp(14px, 3.5vw, 16px);
-      line-height: 1.6;
-      color: #664B3A;
-      text-align: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      z-index: 100;
-      white-space: pre-line;
-      box-sizing: border-box;
-    }
-
-    .lyric-card.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-  </style>
-
-  <button class="back-btn" onclick="back()">BACK</button>
-  <h2>Musicals</h2>
-  <p class="desc">Haunting Melodies</p >
-
-  <div class="vinyl-wall">
-    <div class="vinyl" onclick="showLyric(this, 'hamilton')">
-      < img class="vinyl-cover" src="https://picsum.photos/seed/hamilton-bway/300/300.jpg">
-      <div class="vinyl-label">Hamilton</div>
-    </div>
-    <div class="vinyl" onclick="showLyric(this, 'lesmis')">
-      < img class="vinyl-cover" src="https://picsum.photos/seed/lesmis-2025/300/300.jpg">
-      <div class="vinyl-label">Les Misérables</div>
-    </div>
-    <div class="vinyl" onclick="showLyric(this, 'phantom')">
-      < img class="vinyl-cover" src="https://picsum.photos/seed/phantom-opera/300/300.jpg">
-      <div class="vinyl-label">The Phantom of the Opera</div>
-    </div>
-    <div class="vinyl" onclick="showLyric(this, 'mozart')">
-      < img class="vinyl-cover" src="https://picsum.photos/seed/mozart-d/300/300.jpg">
-      <div class="vinyl-label">Mozart!</div>
-    </div>
-    <div class="vinyl" onclick="showLyric(this, 'rougenoir')">
-      < img class="vinyl-cover" src="https://picsum.photos/seed/rouge-noir-f/300/300.jpg">
-      <div class="vinyl-label">Le Rouge et le Noir</div>
-    </div>
-    <div class="vinyl" onclick="showLyric(this, 'notredame')">
-      < img class="vinyl-cover" src="https://picsum.photos/seed/notre-dame-f/300/300.jpg">
-      <div class="vinyl-label">Notre-Dame de Paris</div>
-    </div>
-    <div class="vinyl" onclick="showLyric(this, 'moliere')">
-      < img class="vinyl-cover" src="https://picsum.photos/seed/moliere-f/300/300.jpg">
-      <div class="vinyl-label">Molière</div>
-    </div>
-    <div class="vinyl" onclick="showLyric(this, '1789')">
-      < img class="vinyl-cover" src="https://picsum.photos/seed/1789-f/300/300.jpg">
-      <div class="vinyl-label">1789</div>
-    </div>
-    <div class="vinyl" onclick="showLyric(this, 'romeo')">
-      < img class="vinyl-cover" src="https://picsum.photos/seed/romeo-f/300/300.jpg">
-      <div class="vinyl-label">Roméo et Juliette</div>
-    </div>
-    <div class="vinyl" onclick="showLyric(this, 'donjuan')">
-      < img class="vinyl-cover" src="https://picsum.photos/seed/donjuan-f/300/300.jpg">
-      <div class="vinyl-label">Don Juan</div>
-    </div>
-    <div class="vinyl" onclick="showLyric(this, 'epic')">
-      < img class="vinyl-cover" src="https://picsum.photos/seed/epic-musical/300/300.jpg">
-      <div class="vinyl-label">EPIC</div>
-    </div>
-    <div class="vinyl" onclick="showLyric(this, 'six')">
-      < img class="vinyl-cover" src="https://picsum.photos/seed/six-bway/300/300.jpg">
-      <div class="vinyl-label">Six</div>
-    </div>
-  </div>
-
-  <div class="lyric-card" id="lyricCard"></div>
-
-  <script>
-    const card = document.getElementById('lyricCard');
-    let lastCover = null;
-    const lyrics = {
-      hamilton: "I am not throwing away my shot.",
-      lesmis: "Who cares about your lonely soul.",
-      phantom: "In sleep he sang to me\nIn dreams he came",
-      mozart: "Wie wird man seinen Schatten los?",
-      rougenoir: "Je veux la gloire à mes genoux,\nJe veux le monde ou rien du tout.",
-      notredame: "Il est venu le temps des cathédrales,\nLe monde est entré,\nDans un nouveau millénaire.",
-      moliere: "Tu finiras par tomber, tomber, tomber,\nDu haut des sommets où tes rêves t'ont porté.",
-      1789: "Nous sommes le futur.",
-      romeo: "Nous on fait l'amour on vit la vie,\nJour après jour nuit après nuit,\nA quoi ça sert d'être sur la terre,\nSi c'est pour faire nos vies à genoux,\nOn sait que le temps c'est comme le vent,\nDe vivre y a que ça d'important,\nOn se fout pas mal de la morale,\nOn sait bien qu'on fait pas de mal.",
-      donjuan: "Les fleurs du mal, les fleurs de lys,\nPerdent leurs pétales, c’est pareil, c’est pareil,\nLes jeux du bal, les jeux du vice,\nCa m’est égal s’ils ne m’emmènent pas au ciel.",
-      epic: "Ruthlessness is mercy upon ourselves.",
-      six: "We're one of a kind, no category.\nToo many years, lost in history."
-    };
-
-    function showLyric(vinylEl, track) {
-      const cover = vinylEl.querySelector('.vinyl-cover');
-      if (lastCover) {
-        lastCover.classList.remove('spinning');
-      }
-      if (lastCover !== cover) {
-        cover.classList.add('spinning');
-        card.textContent = lyrics[track];
-        card.classList.add('show');
-        lastCover = cover;
-      } else {
-        card.classList.remove('show');
-        lastCover = null;
-      }
-    }
-
-    // 点击空白处关闭弹窗
-    document.getElementById('musicals').addEventListener('click', function(e) {
-      if (!card.contains(e.target) && !e.target.closest('.vinyl')) {
-        card.classList.remove('show');
-        if (lastCover) {
-          lastCover.classList.remove('spinning');
-          lastCover = null;
-        }
-      }
-    });
-  </script>
 </div>
   
-     
-
-  </div>
-
+    
   <script>
     function show(id) {
       document.getElementById('home').style.display = 'none';
