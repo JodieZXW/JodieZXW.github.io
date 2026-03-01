@@ -555,14 +555,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const photo = document.getElementById("photo");
   const country = document.getElementById("country");
   const card = document.getElementById("card");
+document.getElementById('card').onclick = nextCountry;
 
+  
   function nextCountry() {
     current = (current + 1) % countries.length;
     photo.src = countries[current].img;
     country.innerText = countries[current].name;
   }
 
-  document.getElementById('card').onclick = nextCountry;
+  
 });
 
 function back() {
