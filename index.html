@@ -562,7 +562,7 @@ document.addEventListener('DOMContentLoaded', function() {
     country.innerText = countries[current].name;
   }
 
-  card.addEventListener('click', nextCountry);
+  document.getElementById('card').onclick = nextCountry;
 });
 
 function back() {
