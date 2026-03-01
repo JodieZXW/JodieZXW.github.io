@@ -640,8 +640,19 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <style>@keyframes rotate{0%{transform:rotateY(0deg);}100%{transform:rotateY(360deg);}}</style>
-<script>const label=document.getElementById('label');document.querySelectorAll('.dot').forEach(d=>{d.addEventListener('click',e=>{label.textContent=d.dataset.text;label.style.left=e.clientX+'px';label.style.top=e.pageY+'px';label.style.opacity=1;setTimeout(()=>label.style.opacity=0,2000);})});</script>
-
+<script>
+const label = document.getElementById('label');
+document.querySelectorAll('.dot').forEach(d => {
+  d.addEventListener('click', e => {
+    label.textContent = d.dataset.text;
+    // 让标签出现在圆点正上方很近的位置
+    label.style.left = e.pageX + 'px';
+    label.style.top = e.pageY - 30 + 'px';
+    label.style.opacity = 1;
+    setTimeout(() => label.style.opacity = 0, 2000);
+  });
+});
+</script>
 
   
 </div>
