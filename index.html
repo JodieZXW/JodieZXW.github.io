@@ -527,38 +527,34 @@ document.addEventListener('DOMContentLoaded', function() {
   <p style="color: #634035; font-weight: bold; margin: 0 0 10px 0;">This idea has been nudging me ever since I started reading books by authors from all over the world 🌍 </p >
 
 
-  <!-- 长图拍立得卡片，点击切换 -->
-  <div id="card" onclick="nextCountry()" style="margin: 40px auto; max-width: 320px; width: 90%; text-align: center; cursor: pointer;">
+  <div id="card" style="margin: 40px auto; max-width: 320px; width: 90%; text-align: center; cursor: pointer;">
     <div style="background: #fff; padding: 12px 12px 30px 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-radius: 6px;">
-      < img id="photo" src="https://picsum.photos/600/1000?random=1" 
+      < img id="photo" src="https://picsum.photos/600/1000?random=1"
            style="width: 100%; height: auto; display: block; border-radius: 2px;">
-      <p id="country" style="color: #634035; font-weight: bold; font-size: 18px; margin: 18px 0 0 0;">United Kingdom</p >
+      <p id="country" style="color: #634035; font-weight: bold; font-size: 18px; margin: 18px 0 0 0;">China</p >
     </div>
   </div>
-
 </div>
 
 <script>
-  // 国家 + 长图（你可以自己替换链接）
+document.addEventListener('DOMContentLoaded', function() {
   const countries = [
-    { name: "United Kingdom", img: "https://p0.pikist.com/photos/952/280/big-ben-westminster-london-parliament-england-uk-britain-landmark-british.jpg" },
-    { name: "France", img: "https://cdn.britannica.com/54/75854-050-E27E66C0/Eiffel-Tower-Paris.jpg
-"},
-    { name: "Japan", img: "https://media.connections.be/image/upload/c_fill,g_auto,q_70,w_1080/v1675089374/Destinations/Asia/Japan/Activity/Japan_Rail_Pass/Bullet_Train_Mount_Fushi.jpg
-" },
-    { name: "Italy", img: "https://upload.wikimedia.org/wikipedia/commons/3/38/Gondola-Venice-Italy.jpg
-" },
-    { name: "Korea", img: "https://picsum.photos/600/1000?random=5" }
-
-
-
-
-    
+    { name: "China", img: "https://picsum.photos/600/1000?random=1" },
+    { name: "United States", img: "https://picsum.photos/600/1000?random=2" },
+    { name: "Spain", img: "https://picsum.photos/600/1000?random=3" },
+    { name: "Italy", img: "https://picsum.photos/600/1000?random=4" },
+    { name: "Germany", img: "https://picsum.photos/600/1000?random=5" },
+    { name: "France", img: "https://picsum.photos/600/1000?random=6" },
+    { name: "Singapore", img: "https://picsum.photos/600/1000?random=7" },
+    { name: "Switzerland", img: "https://picsum.photos/600/1000?random=8" },
+    { name: "United Kingdom", img: "https://picsum.photos/600/1000?random=9" },
+    { name: "Japan", img: "https://picsum.photos/600/1000?random=10" }
   ];
 
   let current = 0;
   const photo = document.getElementById("photo");
   const country = document.getElementById("country");
+  const card = document.getElementById("card");
 
   function nextCountry() {
     current = (current + 1) % countries.length;
@@ -566,11 +562,13 @@ document.addEventListener('DOMContentLoaded', function() {
     country.innerText = countries[current].name;
   }
 
-  function back() {
-    history.back();
-  }
-</script>
+  card.addEventListener('click', nextCountry);
+});
 
+function back() {
+  history.back();
+}
+</script>
 
 
 
