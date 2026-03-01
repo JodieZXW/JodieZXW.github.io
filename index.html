@@ -336,121 +336,50 @@ document.addEventListener('DOMContentLoaded', function() {
   <h2 style="text-align:center; color:#634035; margin-top:20px;">Anime Collection</h2>
   <p style="text-align:center; color:#634035; opacity:0.8;">Top 5</p >
 
-  <!-- 轮播图区域 -->
-  <div id="carouselBox" style="
-    position: relative;
-    width: 100%;
-    height: 50vh;
-    max-height: 500px;
-    border-radius: 12px;
-    overflow: hidden;
-    margin: 30px auto;
-  ">
+  <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 16px;">
 
-    <!-- 你只需要在这里换 src 图片链接 -->
-    < img class="anime-card" src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/05/levi-in-attack-on-titan-1.jpg"
-      data-name="Attack on Titan"
-      data-desc="Epic, dark, and full of twists. The emotion and scale are unforgettable.">
+    <div style="background: #634035; border-radius: 14px; overflow: hidden;">
+      < img src="https://picsum.photos/800/400?1" style="width:100%; height:180px; object-fit: cover;">
+      <div style="padding: 14px;">
+        <h3 style="color:#cea986; margin:0 0 6px;">Attack on Titan</h3>
+        <p style="color:#cea986; font-size:14px; line-height:1.5; margin:0;">Epic, dark, and full of twists. The emotion and scale are unforgettable.</p >
+      </div>
+    </div>
 
-    < img class="anime-card" src="https://i1.whakoom.com/large/0d/13/9a4d145542d440589097005990441fe8.jpg"
-      data-name="Bungo Stray Dogs"
-      data-desc="Unique characters, cool abilities, humor and drama.">
+    <div style="background: #634035; border-radius: 14px; overflow: hidden;">
+      < img src="https://picsum.photos/800/400?2" style="width:100%; height:180px; object-fit: cover;">
+      <div style="padding: 14px;">
+        <h3 style="color:#cea986; margin:0 0 6px;">Bungo Stray Dogs</h3>
+        <p style="color:#cea986; font-size:14px; line-height:1.5; margin:0;">Unique characters, cool abilities, and a perfect mix of humor and drama.</p >
+      </div>
+    </div>
 
-    < img class="anime-card" src="https://static1.moviewebimages.com/wordpress/wp-content/uploads/2024/10/light-yagami-in-death-note.jpg"
-      data-name="Death Note"
-      data-desc="A battle of wits between two geniuses. Tense and smart.">
+    <div style="background: #634035; border-radius: 14px; overflow: hidden;">
+      < img src="https://picsum.photos/800/400?3" style="width:100%; height:180px; object-fit: cover;">
+      <div style="padding: 14px;">
+        <h3 style="color:#cea986; margin:0 0 6px;">Death Note</h3>
+        <p style="color:#cea986; font-size:14px; line-height:1.5; margin:0;">A battle of wits between two geniuses. Tense, smart, and unforgettable.</p >
+      </div>
+    </div>
 
-    < img class="anime-card" src="https://bkimg.cdn.bcebos.com/pic/8435e5dde71190ef76c6112575508a16fdfaae51cabf?x-bce-process=image/format,f_auto/resize,m_lfit,limit_1,h_336"
-      data-name="Detective Conan"
-      data-desc="Classic mystery stories. Clever cases and endless excitement.">
+    <div style="background: #634035; border-radius: 14px; overflow: hidden;">
+      < img src="https://picsum.photos/800/400?4" style="width:100%; height:180px; object-fit: cover;">
+      <div style="padding: 14px;">
+        <h3 style="color:#cea986; margin:0 0 6px;">Detective Conan</h3>
+        <p style="color:#cea986; font-size:14px; line-height:1.5; margin:0;">Classic mystery stories. Clever cases and endless excitement.</p >
+      </div>
+    </div>
 
-    < img class="anime-card" src="https://bkimg.cdn.bcebos.com/pic/0df431adcbef76094b36432e4284b4cc7cd98d103072?x-bce-process=image/format,f_auto/resize,m_lfit,limit_1,h_782"
-      data-name="Demon Slayer"
-      data-desc="Stunning animation, emotional story, beautiful characters.">
+    <div style="background: #634035; border-radius: 14px; overflow: hidden;">
+      < img src="https://picsum.photos/800/400?5" style="width:100%; height:180px; object-fit: cover;">
+      <div style="padding: 14px;">
+        <h3 style="color:#cea986; margin:0 0 6px;">Demon Slayer</h3>
+        <p style="color:#cea986; font-size:14px; line-height:1.5; margin:0;">Stunning animation, emotional story, and beautiful characters.</p >
+      </div>
+    </div>
 
-    <!-- 暂停键：平时完全隐藏，hover 才显示白色图标 -->
-    <button id="playPauseBtn" style="
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 32px;
-      opacity: 0;
-      cursor: pointer;
-    ">⏸️</button>
-  </div>
-
-  <div style="text-align:center; padding:0 20px;">
-    <h3 id="anime-name" style="color:#634035;">Attack on Titan</h3>
-    <p id="anime-desc" style="color:#634035; line-height:1.5;">
-      Epic, dark, and full of twists. The emotion and scale are unforgettable.
-    </p >
   </div>
 </div>
-
-<style>
-.anime-card {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s;
-}
-</style>
-
-<script>
-const cards = document.querySelectorAll('.anime-card');
-const nameEl = document.getElementById('anime-name');
-const descEl = document.getElementById('anime-desc');
-const btn = document.getElementById('playPauseBtn');
-const box = document.getElementById('carouselBox');
-
-let i = 0;
-let playing = true;
-let intervalId;
-
-function show() {
-  cards.forEach((c, idx) => {
-    c.style.opacity = idx === i ? 1 : 0;
-  });
-  nameEl.innerText = cards[i].dataset.name;
-  descEl.innerText = cards[i].dataset.desc;
-}
-
-function next() {
-  i = (i + 1) % cards.length;
-  show();
-}
-
-function start() {
-  intervalId = setInterval(next, 2500);
-  btn.innerText = '⏸️';
-  playing = true;
-}
-
-function stop() {
-  clearInterval(intervalId);
-  btn.innerText = '▶️';
-  playing = false;
-}
-
-// 鼠标放上去显示按钮，移开隐藏
-box.onmouseenter = function() { btn.style.opacity = '1'; }
-box.onmouseleave = function() { btn.style.opacity = '0'; }
-
-// 点击暂停/播放
-btn.onclick = function() {
-  playing ? stop() : start();
-}
-
-show();
-start();
-</script>
-
 
 
     
