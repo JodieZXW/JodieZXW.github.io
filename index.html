@@ -507,11 +507,60 @@ document.addEventListener('DOMContentLoaded', function() {
    <br>
    <p style="color: #964B34; font-weight: bold; margin: 0 0 10px 0;">Instead of " Deny, Delay, Depose", </p >
    <p style="color: #964B34; font-weight: bold; margin: 0 0 10px 0;">Why not " See it, Say it, Sorted". </p >
-  <br>
-    
-     
+  <br>   
   
 </div>
+
+
+
+
+<div id="travel" class="page" style="background: #FDE2E4; margin: 0; padding: 20px; box-sizing: border-box; min-height: 100vh;">
+
+  <button class="back-btn" onclick="back()" style="background: #634035; color: #FDE2E4; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">BACK</button>
+
+  <h2 style="color: #634035; margin-top: 0;">Travel</h2>
+  <p style="margin-top:10px; text-decoration: underline; color: #634035;">Countries I've visited</p >
+
+  <!-- 长图拍立得卡片，点击切换 -->
+  <div id="card" onclick="nextCountry()" style="margin: 40px auto; max-width: 320px; width: 90%; text-align: center; cursor: pointer;">
+    <div style="background: #fff; padding: 12px 12px 30px 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-radius: 6px;">
+      < img id="photo" src="https://picsum.photos/600/1000?random=1" 
+           style="width: 100%; height: auto; display: block; border-radius: 2px;">
+      <p id="country" style="color: #634035; font-weight: bold; font-size: 18px; margin: 18px 0 0 0;">United Kingdom</p >
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // 国家 + 长图（你可以自己替换链接）
+  const countries = [
+    { name: "United Kingdom", img: "https://picsum.photos/600/1000?random=1" },
+    { name: "France", img: "https://picsum.photos/600/1000?random=2" },
+    { name: "Japan", img: "https://picsum.photos/600/1000?random=3" },
+    { name: "Italy", img: "https://picsum.photos/600/1000?random=4" },
+    { name: "Korea", img: "https://picsum.photos/600/1000?random=5" }
+  ];
+
+  let current = 0;
+  const photo = document.getElementById("photo");
+  const country = document.getElementById("country");
+
+  function nextCountry() {
+    current = (current + 1) % countries.length;
+    photo.src = countries[current].img;
+    country.innerText = countries[current].name;
+  }
+
+  function back() {
+    history.back();
+  }
+</script>
+
+
+
+
+    
 
     
     <div id="movies" class="page" style="background:#000; color:#fff; padding:20px; box-sizing:border-box;">
