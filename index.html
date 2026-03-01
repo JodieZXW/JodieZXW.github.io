@@ -330,99 +330,93 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 
-    
-   
-    <div id="anime" class="page" style="
-  margin: 0;
-  padding: 20px;
-  box-sizing: border-box;
-  min-height: 100vh;
-  background: #cea986;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-">
+    <div id="anime" class="page" style="background: #cea986; margin: 0; padding: 20px; box-sizing: border-box;">
+  <button class="back-btn" onclick="back()" style="background: #634035; color: #cea986; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">BACK</button>
+ 
+  <h2 style="text-align:center; color:#634035; margin-top:20px;">Anime Collection</h2>
+  <p style="text-align:center; color:#634035; opacity:0.8;">Top 5</p >
 
-  <button class="back-btn" onclick="history.back()" style="
-    background: #634035;
-    color: #cea986;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    margin-bottom: 20px;
-  ">BACK</button>
+  <!-- 轮播图区域 -->
+  <div id="carouselBox" style="
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    max-height: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 30px auto;
+  ">
 
-  <div style="max-width: 100%; margin: 0 auto;">
-    <h2 style="text-align:center; font-size: 26px; color:#634035;">My Anime Collection</h2>
-    <p style="text-align:center; color:#634035; opacity:0.8;">Stories that changed me</p >
+    <!-- 你只需要在这里换 src 图片链接 -->
+    < img class="anime-card" src="https://picsum.photos/1600/900?1"
+      data-name="Attack on Titan"
+      data-desc="Epic, dark, and full of twists. The emotion and scale are unforgettable.">
 
-    <div style="
-      position: relative;
-      width: 100%;
-      height: 50vh;
-      max-height: 500px;
-      overflow: hidden;
-      margin: 30px 0;
-      border-radius: 12px;
-    ">
-      < img class="anime-card" src="https://picsum.photos/1600/900?1"
-        data-name="Attack on Titan"
-        data-desc="Epic, dark, and full of twists. The emotion and scale are unforgettable. You can write as much as you want here, it won’t disappear suddenly."
-        style="position:absolute; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1s;">
-      < img class="anime-card" src="https://picsum.photos/1600/900?2"
-        data-name="Death Note"
-        data-desc="A battle of geniuses. Tense, smart, and one of the best psychological anime. Take your time to read."
-        style="position:absolute; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1s;">
-      < img class="anime-card" src="https://picsum.photos/1600/900?3"
-        data-name="Demon Slayer"
-        data-desc="Beautiful animation, emotional story, and lovely characters. Read slowly when paused."
-        style="position:absolute; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1s;">
-      < img class="anime-card" src="https://picsum.photos/1600/900?4"
-        data-name="Bungo Stray Dogs"
-        data-desc="Unique characters, cool abilities, humor and drama. This will stay until you play again."
-        style="position:absolute; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1s;">
+    < img class="anime-card" src="https://picsum.photos/1600/900?2"
+      data-name="Bungo Stray Dogs"
+      data-desc="Unique characters, cool abilities, humor and drama.">
 
-      <!-- 只有白色图标，平时隐藏，鼠标放上去才显示 -->
-      <button id="playPauseBtn" style="
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80px;
-        height: 80px;
-        background: transparent;
-        border: none;
-        color: white;
-        font-size: 32px;
-        cursor: pointer;
-        z-index: 10;
-        opacity: 0;          <!-- 平时隐藏 -->
-        transition: 0.2s;    <!-- 淡入淡出 -->
-      ">⏸️</button>
-    </div>
+    < img class="anime-card" src="https://picsum.photos/1600/900?3"
+      data-name="Death Note"
+      data-desc="A battle of wits between two geniuses. Tense and smart.">
 
-    <div style="text-align:center; padding: 0 16px;">
-      <h3 id="anime-name" style="font-size: 20px; color:#634035;">Attack on Titan</h3>
-      <p id="anime-desc" style="color:#634035; line-height:1.6; max-width:700px; margin:10px auto; font-size:15px;">
-        Epic, dark, and full of twists. The emotion and scale are unforgettable. You can write as much as you want here, it won’t disappear suddenly.
-      </p >
-    </div>
+    < img class="anime-card" src="https://picsum.photos/1600/900?4"
+      data-name="Detective Conan"
+      data-desc="Classic mystery stories. Clever cases and endless excitement.">
+
+    < img class="anime-card" src="https://picsum.photos/1600/900?5"
+      data-name="Demon Slayer"
+      data-desc="Stunning animation, emotional story, beautiful characters.">
+
+    <!-- 暂停键：平时完全隐藏，hover 才显示白色图标 -->
+    <button id="playPauseBtn" style="
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 32px;
+      opacity: 0;
+      cursor: pointer;
+    ">⏸️</button>
+  </div>
+
+  <div style="text-align:center; padding:0 20px;">
+    <h3 id="anime-name" style="color:#634035;">Attack on Titan</h3>
+    <p id="anime-desc" style="color:#634035; line-height:1.5;">
+      Epic, dark, and full of twists. The emotion and scale are unforgettable.
+    </p >
   </div>
 </div>
+
+<style>
+.anime-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s;
+}
+</style>
 
 <script>
 const cards = document.querySelectorAll('.anime-card');
 const nameEl = document.getElementById('anime-name');
 const descEl = document.getElementById('anime-desc');
 const btn = document.getElementById('playPauseBtn');
-const container = btn.parentElement;
+const box = document.getElementById('carouselBox');
 
 let i = 0;
 let playing = true;
-let interval;
+let intervalId;
 
 function show() {
-  cards.forEach((c, idx) => c.style.opacity = idx === i ? 1 : 0);
+  cards.forEach((c, idx) => {
+    c.style.opacity = idx === i ? 1 : 0;
+  });
   nameEl.innerText = cards[i].dataset.name;
   descEl.innerText = cards[i].dataset.desc;
 }
@@ -433,30 +427,34 @@ function next() {
 }
 
 function start() {
-  interval = setInterval(next, 2500);
+  intervalId = setInterval(next, 2500);
   btn.innerText = '⏸️';
   playing = true;
 }
 
 function stop() {
-  clearInterval(interval);
+  clearInterval(intervalId);
   btn.innerText = '▶️';
   playing = false;
 }
 
-// 鼠标放到图片上 → 显示按钮
-container.onmouseenter = () => { btn.style.opacity = '1'; }
-// 鼠标离开 → 隐藏按钮
-container.onmouseleave = () => { btn.style.opacity = '0'; }
+// 鼠标放上去显示按钮，移开隐藏
+box.onmouseenter = function() { btn.style.opacity = '1'; }
+box.onmouseleave = function() { btn.style.opacity = '0'; }
 
-btn.onclick = () => {
+// 点击暂停/播放
+btn.onclick = function() {
   playing ? stop() : start();
-};
+}
 
 show();
 start();
 </script>
 
+
+
+    
+    
 
     
     <div id="books" class="page" style="background: #BCD7DE; margin: 0; padding: 20px; box-sizing: border-box;">
