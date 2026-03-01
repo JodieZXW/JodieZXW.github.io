@@ -642,12 +642,27 @@ document.addEventListener('DOMContentLoaded', function() {
 <style>@keyframes rotate{0%{transform:rotateY(0deg);}100%{transform:rotateY(360deg);}}</style>
 <script>
 const label = document.getElementById('label');
+const globe = document.querySelector('.globe-container');
+label.style.position = 'absolute';
+label.style.left = '50%';
+label.style.top = '-30px';
+label.style.transform = 'translateX(-50%)';
+label.style.background = 'white';
+label.style.color = '#6D4C41';
+label.style.padding = '8px 14px';
+label.style.borderRadius = '8px';
+label.style.fontSize = '16px';
+label.style.fontWeight = 'bold';
+label.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+label.style.opacity = '0';
+label.style.transition = 'opacity 0.4s';
+label.style.pointerEvents = 'none';
+label.style.whiteSpace = 'nowrap';
+label.style.zIndex = '20';
+
 document.querySelectorAll('.dot').forEach(d => {
-  d.addEventListener('click', e => {
+  d.addEventListener('click', () => {
     label.textContent = d.dataset.text;
-    // 让标签出现在圆点正上方很近的位置
-    label.style.left = e.pageX + 'px';
-    label.style.top = e.pageY - 30 + 'px';
     label.style.opacity = 1;
     setTimeout(() => label.style.opacity = 0, 2000);
   });
